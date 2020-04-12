@@ -1,0 +1,94 @@
+<div class="col-md-12" style="padding: 15px;">
+    <div class="">
+        <div class="row">
+            <div class="col-10">
+                <h1>Clientes</h1>
+            </div>
+            <div class="col-2">
+                <button type="button" class="btn btn-success glyphicon glyphicon-pencil " data-toggle="modal" data-target="#exampleModal">Registrar cliente</button>
+            </div>
+        </div>
+        <br>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Documento</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Direccion</th>
+                    <th scope="col">Email</th>
+                    <td> </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let Cliente of TodosLosClientes">
+                    <th scope="row"> {{Cliente.tipO_DOCUMENTO}} {{ Cliente.numerO_DOCUMENTO }} </th>
+                    <td> {{ Cliente.nombre }} {{ Cliente.apellido }}</td>
+                    <td> {{ Cliente.telefono }} </td>
+                    <td> {{ Cliente.direccion }} </td>
+                    <td> {{ Cliente.email }} </td>
+                    <td> <button type="button" (click)="clienteAux(Cliente)" class="btn btn-primary glyphicon glyphicon-pencil" data-toggle="modal" data-target=".bd-example-modal-xl">Editar</button> </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="exampleModalLabel">Editar cliente</h1>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cerrarModal()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-modificar-cliente [inputCliente]="camposCliente" [showMensaje]=false [showButton]=true></app-modificar-cliente>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="exampleModalLabel">Buscar cliente</h1>
+                <button id="close_modal" type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cerrarModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="searchClienteForm" (ngSubmit)="buscarCliente(searchClienteForm.value)">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <Label>Tipo de documento</Label>
+                            <select class="form-control" name="tipos" formControlName="searchTipoDocumentoCliente">
+                                <option *ngFor="let item of listaDocumento" [value]="item.acronimo"> {{ item.acronimo }}  </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <Label>Numero de documento:</Label>
+                            <input class="form-control" type="text" formControlName="searchDocumentoCliente" placeholder="numero de documento">
+                        </div>
+                    </div>
+
+                    <br>
+                    <div *ngIf="showMensaje" class="alert alert-success" role="alert" id="blockMenssage">
+                        <h4 class="alert-heading">Respuesta!</h4>
+                        <p> {{ respBuscaClienteMensaje }} </p>
+                        <hr>
+                        <p class="mb-0"></p>
+                    </div>
+                    <button *ngIf="showButton" class="btn btn-primary float" id="btnGuardar"> Buscar </button>
+                    <br>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+.padre {
+    background-color: #fafafa;
+    /* IMPORTANTE 
+    text-align: center;*/
+}
+
+.float {
+    float: right;
+}

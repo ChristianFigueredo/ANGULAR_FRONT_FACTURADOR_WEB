@@ -1,0 +1,69 @@
+<div class="col-md-12" style="padding: 15px;">
+    <div class="">
+        <div class="row">
+            <div class="col-12">
+                <h1>Registrar cliente</h1>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <form [formGroup]="newClienteForm" (ngSubmit)="onSubmit(newClienteForm.value)">
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <label>Tipo de documento</label>
+                    <input type="text" class="form-control" formControlName="clienteTipoDocumento" value=" {{ tipoDocumento }} " readonly />
+                </div>
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" formControlName="clienteNombre" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Telefono</label>
+                    <input type="text" formControlName="clienteTelefono" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Direccion</label>
+                    <input type="text" formControlName="clienteDireccion" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="form-group">
+                    <label>Numero de documento</label>
+                    <input type="text" formControlName="clienteNumeroDocumento" class="form-control" value=" {{ numeroDocumento }} " readonly/>
+                </div>
+                <div class="form-group">
+                    <label>Apellido</label>
+                    <input type="text" formControlName="clienteApellido" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" formControlName="clienteEmail" class="form-control" />
+                </div>
+                <br>
+                <br>
+                <button class="btn btn-success float" id="btnGuardar"> Registrar</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Resultado transaccion</h4>
+            </div>
+            <div class="modal-body">
+                <p> {{ mensaje }} </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal" (click)="cerrar_modal()">Ok</button>
+            </div>
+        </div>
+
+    </div>
+</div>

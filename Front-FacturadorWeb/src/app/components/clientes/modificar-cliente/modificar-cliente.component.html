@@ -1,0 +1,58 @@
+<form [formGroup]="editClienteForm" (ngSubmit)="onSubmit(editClienteForm.value)">
+    <div class="form-row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" formControlName="clienteNombre" class="form-control" value="{{ inputCliente?.nombre }}" />
+                    </div>
+                    <div class="form-group">
+                        <label>Apellido</label>
+                        <input type="text" formControlName="clienteApellido" class="form-control" value="{{ inputCliente?.apellido }}" />
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo de documento</label>
+                        <input type="text" formControlName="clienteTipoDocumento" class="form-control" value="{{ inputCliente?.tipO_DOCUMENTO }}" readonly />
+                    </div>
+                    <div class="form-group">
+                        <label>Numero de documento</label>
+                        <input type="text" formControlName="clienteNumeroDocumento" class="form-control" value="{{ inputCliente?.numerO_DOCUMENTO }}" readonly />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Direccion</label>
+                        <input type="text" formControlName="clienteDireccion" class="form-control" value="{{ inputCliente?.direccion }}" />
+                    </div>
+                    <div class="form-group">
+                        <label>Telefono</label>
+                        <input type="text" formControlName="clienteTelefono" class="form-control" value="{{ inputCliente?.telefono }}" />
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" formControlName="clienteEmail" class="form-control" value="{{ inputCliente?.email }}" />
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <div *ngIf="showMensaje" class="alert alert-success" role="alert" id="blockMenssage" @fadeIn>
+        <h4 class="alert-heading">Respuesta!</h4>
+        <p> {{ respuesta | json }} </p>
+        <hr>
+        <p class="mb-0"></p>
+    </div>
+
+    <button *ngIf="showButton" class="btn btn-primary float" id="btnGuardar"> Guardar cambios</button>
+</form>
+<br>
