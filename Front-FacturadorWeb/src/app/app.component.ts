@@ -39,8 +39,8 @@ export class AppComponent {
         return;
     }
 
-    login.username = MyForm.usuarioLogin;
-    login.password = MyForm.passwordLogin;
+    login.NICKNAME = MyForm.usuarioLogin;
+    login.PASSWORD = MyForm.passwordLogin;
     this.autenticatioService.Login(login);
     const persona = JSON.parse(localStorage.getItem('user'));
     this.sesion = true;

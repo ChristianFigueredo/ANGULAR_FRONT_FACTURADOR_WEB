@@ -67,9 +67,9 @@ export class ListadoComponent implements OnInit {
     .subscribe( (data: any) => {
       this.respBuscaClienteCodigo = data.codigo;
       this.respBuscaClienteMensaje = data.mensaje;
-    });
+      console.log('Codigo' + this.respBuscaClienteMensaje);
 
-    if ( this.respBuscaClienteCodigo === '0000') {
+      if ( this.respBuscaClienteCodigo === '0000') {
         this.showButton = false;
         this.showMensaje = true;
 
@@ -81,11 +81,13 @@ export class ListadoComponent implements OnInit {
           console.log('Set time out 2 seconds');
         }, 2000);
 
-    } else {
-        console.log('Cliente no existe, redirigir al registro');
-        document.getElementById('close_modal').click();
-        this.router.navigate(['facturador/clientes/registrar/' + searchForm.searchTipoDocumentoCliente + '/' + searchForm.searchDocumentoCliente]);
-    }
+      } else {
+          console.log('Cliente no existe, redirigir al registro');
+          document.getElementById('close_modal').click();
+          this.router.navigate(['facturador/clientes/registrar/' + searchForm.searchTipoDocumentoCliente + '/' + searchForm.searchDocumentoCliente]);
+      }
+    });
+
   }
 
 }

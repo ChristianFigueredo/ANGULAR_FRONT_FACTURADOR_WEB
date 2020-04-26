@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AutenticationService } from '../../services/autentication.service';
 import { Login } from '../../Models/loginModel';
+import { Usuario } from '../../Models/usuarioModel';
 
 @Component({
   selector: 'app-login',
@@ -38,14 +39,25 @@ export class LoginComponent  {
           return;
       }
 
-      login.username = MyForm.usuarioLogin;
-      login.password = MyForm.passwordLogin;
-      this.autenticatioService.Login(login);
+      login.NICKNAME = MyForm.usuarioLogin;
+      login.PASSWORD = MyForm.passwordLogin;
+      /* this.autenticatioService.Login(login);
       const persona = JSON.parse(localStorage.getItem('user'));
-      this.sesion = true;
+      this.sesion = true; */
+
+      this.autenticatioService.Login(login).
+          subscribe( (x: any) => {
+              console.log(x);
+              if (x.respuestA_TRANSACCION.codigo === '0000') {
+                localStorage.setItem('user', JSON.stringify( x ));
+                this.router.navigate(['facturador/clientes/listado']);
+              } else {
+                alert( x.respuestA_TRANSACCION.mensaje + ' \n\n' + JSON.stringify(this.registerForm.value, null, 4));
+              }
+          });
 
       // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
-      this.router.navigate(['facturador/clientes/listado']);
+      // this.router.navigate(['facturador/clientes/listado']);
 
   }
 
