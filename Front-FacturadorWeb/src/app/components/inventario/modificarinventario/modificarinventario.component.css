@@ -1,0 +1,15 @@
+p {
+    font-family: Lato;
+}
+
+textarea {
+    width: 100%;
+}
+
+div {
+    padding: 5px;
+}
+
+.float {
+    float: right;
+}

@@ -1,0 +1,69 @@
+<div class="col-md-12" style="padding: 15px;">
+    <div class="">
+        <div class="row">
+            <div class="col-12">
+                <h1>Registrar inventario</h1>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <form [formGroup]="newInventarioForm" (ngSubmit)="onSubmit(newInventarioForm.value)">
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" formControlName="inventarioNombre" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Descripcion</label>
+                    <input type="text" formControlName="inventarioDescripcion" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Total Recibidos</label>
+                    <input type="text" formControlName="inventarioTotalRecibidos" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Porcentaje IVA</label>
+                    <input type="text" formControlName="inventarioPorcentajeIva" class="form-control" />
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="form-group">
+                    <label>Porcentaje descuento</label>
+                    <input type="text" formControlName="inventarioPorcentajeDescuento" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Precio Compra</label>
+                    <input type="text" formControlName="inventarioPrecioCompra" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Precio Venta</label>
+                    <input type="text" formControlName="inventarioPrecioVenta" class="form-control" />
+                </div>
+                <br>
+                <br>
+                <button class="btn btn-success float" id="btnGuardar"> Registrar</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Resultado transaccion</h4>
+            </div>
+            <div class="modal-body">
+                <p> {{ mensaje }} </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal" (click)="cerrar_modal()">Ok</button>
+            </div>
+        </div>
+
+    </div>
+</div>

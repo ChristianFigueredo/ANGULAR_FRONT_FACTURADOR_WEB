@@ -10,15 +10,19 @@ import { NavbarMenuComponent } from './components/shared/navbar-menu/navbar-menu
 import { RegistrarClienteComponent } from './components/clientes/registrar-cliente/registrar-cliente.component';
 import { ModificarClienteComponent } from './components/clientes/modificar-cliente/modificar-cliente.component';
 import { HistoricoComponent } from './components/historico/historico.component';
-import { InventarioComponent } from './components/inventario/inventario.component';
-
+import { ListadoinventarioComponent } from './components/inventario/listadoinventario/listadoinventario.component';
+import { ClientesComponent } from './components/clientes/clientes/clientes.component';
+import { ListadoComponent } from './components/clientes/listado/listado.component';
 // animaciones
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // peticiones  http
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { ClientesComponent } from './components/clientes/clientes/clientes.component';
-import { ListadoComponent } from './components/clientes/listado/listado.component';
+import { InventarioComponent } from './components/inventario/inventario/inventario.component';
+import { RegistrarinventarioComponent } from './components/inventario/registrarinventario/registrarinventario.component';
+import { ModificarinventarioComponent } from './components/inventario/modificarinventario/modificarinventario.component';
+
+
 
 
 
@@ -31,9 +35,12 @@ import { ListadoComponent } from './components/clientes/listado/listado.componen
     RegistrarClienteComponent,
     ModificarClienteComponent,
     HistoricoComponent,
-    InventarioComponent,
     ClientesComponent,
-    ListadoComponent
+    ListadoComponent,
+    ListadoinventarioComponent,
+    InventarioComponent,
+    RegistrarinventarioComponent,
+    ModificarinventarioComponent
   ],
   imports: [
     BrowserModule,

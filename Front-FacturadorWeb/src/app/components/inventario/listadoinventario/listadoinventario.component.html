@@ -1,0 +1,70 @@
+<div class="col-md-12" style="padding: 15px;">
+    <div class="">
+        <div class="row">
+            <div class="col-10">
+                <h1>Inventario</h1>
+            </div>
+            <div class="col-2">
+                <button type="button" class="btn btn-success glyphicon glyphicon-pencil" [routerLink]="['../registrar']">Registrar producto</button>
+            </div>
+        </div>
+        <br>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Recibidos</th>
+                    <th scope="col">Vendidos</th>
+                    <th scope="col">Desincorporados</th>
+                    <th scope="col">Devueltos</th>
+                    <th scope="col">Proceso</th>
+                    <th scope="col">P. Compra</th>
+                    <th scope="col">P. Venta</th>
+                    <th scope="col">Registro</th>
+                    <th scope="col">%-IVA</th>
+                    <th scope="col">%-Descuento</th>
+                    <td> </td>
+                    <td> </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let producto of inventario">
+                    <th scope="row"> {{ producto.codigo }}</th>
+                    <td> {{ producto.nombre }}</td>
+                    <td> {{ producto.descripcion }} </td>
+                    <td> {{ producto.totalRecibidos }} </td>
+                    <td> {{ producto.totalVendidos }} </td>
+                    <td> {{ producto.totalDesincorporados }} </td>
+                    <td> {{ producto.totalDevueltos }} </td>
+                    <td> {{ producto.totalProceso }} </td>
+                    <td> {{ producto.precioCompra }} </td>
+                    <td> {{ producto.precioVenta }} </td>
+                    <td> {{ producto.fechaRegistro }} </td>
+                    <td> {{ producto.porcentajeIva }} </td>
+                    <td> {{ producto.porcentajeDescuento }} </td>
+                    <td> <button type="button" class="btn btn-warning"> Ver </button> </td>
+                    <td> <button type="button" (click)="inventarioAux(producto)" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Editar</button> </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="exampleModalLabel">Editar producto</h1>
+                <button id="close_modal" type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="cerrarModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-modificarinventario [inputInventario]="camposInventario" [showMensaje]=false [showButton]=true></app-modificarinventario>
+            </div>
+        </div>
+    </div>
+</div>
