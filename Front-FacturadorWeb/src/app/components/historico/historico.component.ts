@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FacturacionService } from '../../services/facturacion.service';
 
 @Component({
   selector: 'app-historico',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoricoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private facturacionService: FacturacionService) { }
 
   ngOnInit() {
+    this.facturacionService.signalReceived.
+    subscribe((signal: any) => {
+      console.log(signal);
+      // this.signalList.push(signal);
+    });
   }
 
 }
