@@ -44,9 +44,8 @@
                     <td> {{ producto.fechaRegistro }} </td>
                     <td> {{ producto.porcentajeIva }} </td>
                     <td> {{ producto.porcentajeDescuento }} </td>
-                    <td> <button type="button" (click)="verCodigoProducto(producto)" class="btn btn-danger" data-toggle="modal" data-target=".bd-example"> Ver </button> </td>
+                    <td> <button type="button" (click)="verCodigoProducto(producto)" class="btn  ver" data-toggle="modal" data-target=".bd-example"> Ver </button> </td>
                     <td> <button type="button" (click)="inventarioAux(producto)" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Editar</button> </td>
-
                 </tr>
             </tbody>
         </table>

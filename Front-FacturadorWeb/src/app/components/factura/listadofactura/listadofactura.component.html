@@ -1,0 +1,85 @@
+<div class="col-md-12" style="padding: 15px;">
+    <div class="">
+        <div class="row">
+            <div class="col-10">
+                <h1>Facturas</h1>
+            </div>
+            <div class="col-2">
+                <button *ngIf="realizarOperacion" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Registrar factura</button>
+                <button *ngIf="realizarOperacion == false" type="button" class="btn btn-success" (click)="continuarFacturaEnProceso()">Continuar</button>
+            </div>
+        </div>
+        <br>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Numero</th>
+                    <th scope="col">Fecha apertura</th>
+                    <th scope="col">Fecha cierre</th>
+                    <th scope="col">Total IVA</th>
+                    <th scope="col">Total Descuento</th>
+                    <th scope="col">Sub Total</th>
+                    <th scope="col">Monto Total</th>
+                    <th scope="col">Estado</th>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let factura of listadoFactura">
+                    <th scope="row"> {{ factura.numero }}</th>
+                    <td> {{ factura.fechaApertura }}</td>
+                    <td> {{ factura.fechaCierre }} </td>
+                    <td> {{ factura.valorIva }} </td>
+                    <td> {{ factura.valorDescuento }} </td>
+                    <td> {{ factura.valorSubtotal }} </td>
+                    <td> {{ factura.valorTotal }} </td>
+                    <td> {{ factura.estado }} </td>
+                    <td> <button type="button" class="btn  ver" data-toggle="modal" data-target=".bd-example"> Ver </button> </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="exampleModalLabel">Buscar cliente</h1>
+                <button id="close_modal" type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="searchClienteForm">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <Label>Tipo de documento</Label>
+                            <select class="form-control" name="tipos" formControlName="searchTipoDocumentoCliente">
+                                <option *ngFor="let item of listaDocumento" [value]="item.acronimo"> {{ item.acronimo }}  </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <Label>Numero de documento:</Label>
+                            <input class="form-control" type="text" formControlName="searchDocumentoCliente" placeholder="numero de documento">
+                        </div>
+                    </div>
+
+                    <br>
+                    <div *ngIf="showMensaje" class="alert alert-success" role="alert" id="blockMenssage">
+                        <h4 class="alert-heading">Respuesta!</h4>
+                        <p> {{ respBuscaClienteMensaje }} </p>
+                        <hr>
+                        <p class="mb-0"></p>
+                    </div>
+                    <button *ngIf="showButton" class="btn btn-primary float_left" id="btnGuardar" (click)="buscarCliente(searchClienteForm.value)"> Buscar </button>
+                    <button *ngIf="showButton" class="btn btn-success float_left" (click)="registrarCliente(searchClienteForm.value)"> Registrar </button>
+                    <button *ngIf="showButton" class="btn btn-secondary float_right" (click)="facturaGenerica()"> Omitir </button>
+                    <br>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

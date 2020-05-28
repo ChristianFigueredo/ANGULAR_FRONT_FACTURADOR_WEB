@@ -9,7 +9,7 @@ import { LoginComponent } from './components/login/login.component';
 import { NavbarMenuComponent } from './components/shared/navbar-menu/navbar-menu.component';
 import { RegistrarClienteComponent } from './components/clientes/registrar-cliente/registrar-cliente.component';
 import { ModificarClienteComponent } from './components/clientes/modificar-cliente/modificar-cliente.component';
-import { HistoricoComponent } from './components/historico/historico.component';
+
 import { ListadoinventarioComponent } from './components/inventario/listadoinventario/listadoinventario.component';
 import { ClientesComponent } from './components/clientes/clientes/clientes.component';
 import { ListadoComponent } from './components/clientes/listado/listado.component';
@@ -21,6 +21,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { InventarioComponent } from './components/inventario/inventario/inventario.component';
 import { RegistrarinventarioComponent } from './components/inventario/registrarinventario/registrarinventario.component';
 import { ModificarinventarioComponent } from './components/inventario/modificarinventario/modificarinventario.component';
+import { ListadofacturaComponent } from './components/factura/listadofactura/listadofactura.component';
+import { RegistrarfacturaComponent } from './components/factura/registrarfactura/registrarfactura.component';
+import { FacturaComponent } from './components/factura/factura/factura.component';
 
 
 
@@ -34,13 +37,16 @@ import { ModificarinventarioComponent } from './components/inventario/modificari
     NavbarMenuComponent,
     RegistrarClienteComponent,
     ModificarClienteComponent,
-    HistoricoComponent,
+
     ClientesComponent,
     ListadoComponent,
     ListadoinventarioComponent,
     InventarioComponent,
     RegistrarinventarioComponent,
-    ModificarinventarioComponent
+    ModificarinventarioComponent,
+    ListadofacturaComponent,
+    RegistrarfacturaComponent,
+    FacturaComponent
   ],
   imports: [
     BrowserModule,

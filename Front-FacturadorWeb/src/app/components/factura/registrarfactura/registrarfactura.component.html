@@ -1,0 +1,122 @@
+<!-- {{ factura | json }} -->
+
+<div class="invoice overflow-auto">
+    <div style="min-width: 600px">
+        <div class="row">
+            <div class="col-12">
+                <h1>FACTURACION</h1>
+            </div>
+        </div>
+        <hr/>
+        <div class="col invoice-to">
+            <div class="text-gray-light">CLIENTE:</div>
+            <h2 class="to"> {{ factura?.cliente.nombreCliente }} {{ factura?.cliente.apellidoCliente }} </h2>
+            <div class="address"> {{ factura?.cliente.acronimoCliente }} - {{ factura?.cliente.documentoCliente }} </div>
+            <div class="text-gray-light">FACTURA:</div>
+            <div class="address"> {{ factura?.numeroFactura }} </div>
+        </div>
+        <br>
+        <table border="0" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                    <th>CODIGO</th>
+                    <th class="text-left">DESCRIPCION</th>
+                    <th class="text-right">V. UNITARIO</th>
+                    <th class="text-right">CANTIDAD</th>
+                    <th class="text-right">DESCUENTO</th>
+                    <th class="text-right">IVA</th>
+                    <th class="text-right">TOTAL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let producto of factura?.productos; let i = index" [attr.data-index]="i">
+                    <td class="no"> {{ producto.codigo }} </td>
+                    <td class="text-left">
+                        <h3> {{ producto.nombre }} </h3> {{ producto.descripcion }} </td>
+                    <td class="qty">${{ producto.valorUnitario }}</td>
+                    <td class="unit">{{ producto.cantidad }} <button (click)="restarProducto(producto.codigo)" style="float: left;" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal"> -1 </button></td>
+                    <td class="qty">${{ producto.valorTotalDescuento }}</td>
+                    <td class="qty">${{ producto.valorTotalIva }}</td>
+                    <td class="total">${{ producto.valorTotal }}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <br><br>
+                <tr>
+                    <td colspan="2"></td>
+                    <td colspan="2"></td>
+                    <td colspan="2">SUBTOTAL</td>
+                    <td>${{ factura?.valorSubtotal }}</td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                    <td colspan="2"></td>
+                    <td colspan="2">TOTAL DESCUENTOS</td>
+                    <td>${{ factura?.valorDescuento }} </td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                    <td colspan="2"></td>
+                    <td colspan="2">TOTAL IVA</td>
+                    <td>${{ factura?.valorIva }} </td>
+                </tr>
+                <tr>
+
+                    <td colspan="2"></td>
+                    <td colspan="2"></td>
+                    <td colspan="2">TOTAL A PAGAR</td>
+                    <td>${{ factura?.valorTotal }}</td>
+                </tr>
+            </tfoot>
+        </table>
+        <br><br>
+        <div class="row">
+            <div class="col-7"> </div>
+            <div class="col-5">
+                <button type="button" class="btn btn-primary" style="float: right; margin-left: 25px;" data-toggle="modal" data-target="#finalizarModal">Finalizar facturacion </button>
+                <button type="button" class="btn btn-success" style="float: right" data-toggle="modal" data-target="#cancelarModal">Cancelar factura </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="cancelarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="exampleModalLabel">Cancelar factura</h1>
+                <button id="close_modal" type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                <p>¿ Confirma que desea anular la factura ?</p>
+                <div>
+                    <button type="button" class="btn btn-danger" style="float: right; margin-left: 15px;" data-dismiss="modal" (click)="cancelarFactura()">Si </button>
+                    <button type="button" class="btn btn-success" style="float: right;" data-dismiss="modal">No </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="finalizarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="exampleModalLabel">Finalizar</h1>
+                <button id="close_modal" type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                <p>¿ Confirma que desea finalizar el proceso de facturacion ?</p>
+                <div>
+                    <button type="button" class="btn btn-danger" style="float: right; margin-left: 15px;" data-dismiss="modal" (click)="finalizarFactura()">Si </button>
+                    <button type="button" class="btn btn-success" style="float: right;" data-dismiss="modal">No </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

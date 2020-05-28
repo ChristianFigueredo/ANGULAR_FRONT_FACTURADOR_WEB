@@ -1,0 +1,16 @@
+.ver {
+    background-color: #F59B00;
+    color: White;
+}
+
+.float_right {
+    float: right;
+    padding: 7px;
+    margin: 5px;
+}
+
+.float_left {
+    float: left;
+    padding: 7px;
+    margin: 5px;
+}
